@@ -134,8 +134,8 @@ def callback_inline(call):
         if call.message:
             if call.data == '1-1':
                 bot.send_message(call.message.chat.id, descrb.it1_1)
-                with descrb.ph1_1 as ph1_1
-                bot.send_photo(call.message.chat.id, ph1_1)
+                with descrb.ph1_1 as ph1_1:
+                    bot.send_photo(call.message.chat.id, ph1_1)
             elif call.data == '1-2':
                 bot.send_message(call.message.chat.id, descrb.it1_2)
                 bot.send_photo(call.message.chat.id, descrb.ph1_2)
