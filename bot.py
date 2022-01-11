@@ -134,16 +134,19 @@ def callback_inline(call):
         if call.message:
             if call.data == '1-1':
                 bot.send_message(call.message.chat.id, descrb.it1_1)
-                with descrb.ph1_1 as ph1_1:
-                    bot.send_photo(call.message.chat.id, ph1_1)
-                    print(ph1_1)
+                bot.send_photo(call.message.chat.id, descrb.ph1_1)
+                descrb.ph1_1.seek(0)
+
             elif call.data == '1-2':
                 bot.send_message(call.message.chat.id, descrb.it1_2)
                 bot.send_photo(call.message.chat.id, descrb.ph1_2)
+                descrb.ph1_2.seek(0)
 
             elif call.data == '1-3':
                 bot.send_message(call.message.chat.id, descrb.it1_3)
                 bot.send_photo(call.message.chat.id, descrb.ph1_3)
+                descrb.ph1_3.seek(0)
+
 
             elif call.data == '1-4':
                 bot.send_message(call.message.chat.id, descrb.it1_4)
@@ -164,6 +167,7 @@ def callback_inline(call):
             elif call.data == '2-5':
                 bot.send_message(call.message.chat.id, mvision.it2_5)
                 bot.send_photo(call.message.chat.id, mvision.ph2_5)
+                mvision.ph2_5.seek(0)
             elif call.data == '3-11':
                 bot.send_message(call.message.chat.id, MM.it3_11, parse_mode='HTML')
                 markup = types.InlineKeyboardMarkup(row_width=1)
@@ -338,6 +342,8 @@ def callback_inline(call):
                 bot.send_message(call.message.chat.id, MM.it3_51_3)
                 bot.send_photo(call.message.chat.id, MM.ph_351_3)
                 bot.send_message(call.message.chat.id, MM.it3_51_4, parse_mode='HTML')
+                MM.ph_351_2.seek(0)
+                MM.ph_351_3.seek(0)
 
                 markup = types.InlineKeyboardMarkup(row_width=1)
                 item3_51 = types.InlineKeyboardButton("Установка связи с БД", callback_data='3-51')
@@ -408,18 +414,25 @@ def callback_inline(call):
                 bot.send_photo(call.message.chat.id, wenco.ph4_11)
                 bot.send_photo(call.message.chat.id, wenco.ph4_12)
                 bot.send_photo(call.message.chat.id, wenco.ph4_13)
+                wenco.ph4_11.seek(0)
+                wenco.ph4_12.seek(0)
+                wenco.ph4_13.seek(0)
             elif call.data == '4-2':
                 bot.send_message(call.message.chat.id, wenco.it4_2, parse_mode='HTML')
                 bot.send_video(call.message.chat.id, wenco.vd4_2)
+                wenco.vd4_2.seek(0)
             elif call.data == '4-3':
                 bot.send_message(call.message.chat.id, wenco.it4_3, parse_mode='HTML')
                 bot.send_video(call.message.chat.id, wenco.vd4_3)
+                wenco.vd4_3.seek(0)
             elif call.data == '4-4':
                 bot.send_message(call.message.chat.id, wenco.it4_4, parse_mode='HTML')
                 bot.send_video(call.message.chat.id, wenco.vd4_4)
+                wenco.vd4_4.seek(0)
             elif call.data == '4-5':
                 bot.send_message(call.message.chat.id, wenco.it4_5, parse_mode='HTML')
                 bot.send_video(call.message.chat.id, wenco.vd4_5)
+                wenco.vd4_5.seek(0)
             elif call.data == '5-1':
                 bot.send_message(call.message.chat.id, report.it5_1)
             elif call.data == '5-2':
