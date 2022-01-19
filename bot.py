@@ -57,15 +57,15 @@ def bot_body(message):
             markup.add(item1_1, item1_2, item1_3, item1_4, item1_5, item1_6, item1_7)
             bot.send_message(message.chat.id, 'Выбери интересующий раздел', reply_markup=markup)
 
+
         elif message.text == 'Работа с MineVision':
             markup = types.InlineKeyboardMarkup(row_width=1)
             item2_1 = types.InlineKeyboardButton("Печать бирок", callback_data='2-1')
             item2_2 = types.InlineKeyboardButton("Создание наряд-заказа", callback_data='2-2')
-            item2_3 = types.InlineKeyboardButton("Добавление контрольных проб в реестр", callback_data='2-3')
-            item2_4 = types.InlineKeyboardButton("Создание реестра горстьевых проб", callback_data='2-4')
-            item2_5 = types.InlineKeyboardButton("Получение действующей топоповерхности", callback_data='2-5')
+            item2_3 = types.InlineKeyboardButton("Создание реестра горстьевых проб", callback_data='2-3')
+            item2_4 = types.InlineKeyboardButton("Получение действующей топоповерхности", callback_data='2-4')
 
-            markup.add(item2_1, item2_2, item2_3, item2_4, item2_5)
+            markup.add(item2_1, item2_2, item2_3, item2_4)
 
             bot.send_message(message.chat.id, 'MineVision это база данных завернутая в интеративную оболочку. '
                                               'Ниже можете выбрать инетересующее действие', reply_markup=markup)
@@ -95,14 +95,15 @@ def bot_body(message):
             bot.send_message(message.chat.id, 'Wenco - это система диспечеризации и база данных, '
                                               'она позволяет вести максимальный контроль за рабочей техникой в '
                                               'карьере', reply_markup=markup)
-        elif message.text == 'Составление сводок и расчетов':
+        elif message.text == 'Методики работ':
             markup = types.InlineKeyboardMarkup(row_width=1)
             item5_1 = types.InlineKeyboardButton("Создание суточной совдки рудного контроля", callback_data='5-1')
             item5_2 = types.InlineKeyboardButton("Определение содержания в подаче на ЗИФ", callback_data='5-2')
             item5_3 = types.InlineKeyboardButton("Создание блочной модели по скважинам СЭР", callback_data='5-3')
             item5_4 = types.InlineKeyboardButton("Расчет ежемесячного соспоставления", callback_data='5-4')
             item5_5 = types.InlineKeyboardButton("Выгрузки из ИТС", callback_data='5-5')
-            markup.add(item5_1, item5_2, item5_3, item5_4, item5_5)
+            item5_6 = types.InlineKeyboardButton("Подготовка блоков к работе", callback_data='5-6')
+            markup.add(item5_1, item5_2, item5_3, item5_4, item5_5, item5_6)
 
             bot.send_message(message.chat.id, 'В этом разделе находятся подсказки для выполнения следующих '
                                               'работ', reply_markup=markup)
@@ -157,17 +158,21 @@ def callback_inline(call):
             elif call.data == '1-7':
                 bot.send_message(call.message.chat.id, descrb.it1_7)
             elif call.data == '2-1':
-                bot.send_message(call.message.chat.id, mvision.it2_1)
+                bot.send_message(call.message.chat.id, mvision.it2_1, parse_mode='HTML')
+                bot.send_photo(call.message.chat.id, mvision.ph2_1)
+                mvision.ph2_1.seek(0)
             elif call.data == '2-2':
-                bot.send_message(call.message.chat.id, mvision.it2_2)
+                bot.send_message(call.message.chat.id, mvision.it2_2, parse_mode='HTML')
+                bot.send_video(call.message.chat.id, mvision.vd2_2)
+                mvision.vd2_2.seek(0)
             elif call.data == '2-3':
                 bot.send_message(call.message.chat.id, mvision.it2_3)
+                bot.send_video(call.message.chat.id, mvision.vd2_3)
+                mvision.vd2_3.seek(0)
             elif call.data == '2-4':
                 bot.send_message(call.message.chat.id, mvision.it2_4)
-            elif call.data == '2-5':
-                bot.send_message(call.message.chat.id, mvision.it2_5)
-                bot.send_photo(call.message.chat.id, mvision.ph2_5)
-                mvision.ph2_5.seek(0)
+                bot.send_photo(call.message.chat.id, mvision.ph2_4)
+                mvision.ph2_4.seek(0)
             elif call.data == '3-11':
                 bot.send_message(call.message.chat.id, MM.it3_11, parse_mode='HTML')
                 markup = types.InlineKeyboardMarkup(row_width=1)
@@ -443,14 +448,18 @@ def callback_inline(call):
                 bot.send_message(call.message.chat.id, report.it5_4)
             elif call.data == '5-5':
                 bot.send_message(call.message.chat.id, report.it5_5)
+            elif call.data == '5-6':
+                bot.send_message(call.message.chat.id, report.it5_6)
+                bot.send_video(call.message.chat.id, report.vd5_6)
+                report.vd5_6.seek(0)
             elif call.data == '6-1':
-                bot.send_message(call.message.chat.id, tbsb.it6_1)
+                bot.send_message(call.message.chat.id, tbsb.it6_1, parse_mode='HTML')
             elif call.data == '6-2':
-                bot.send_message(call.message.chat.id, tbsb.it6_2)
+                bot.send_message(call.message.chat.id, tbsb.it6_2, parse_mode='HTML')
             elif call.data == '6-3':
-                bot.send_message(call.message.chat.id, tbsb.it6_3)
+                bot.send_message(call.message.chat.id, tbsb.it6_3, parse_mode='HTML')
             elif call.data == '6-4':
-                bot.send_message(call.message.chat.id, tbsb.it6_4)
+                bot.send_message(call.message.chat.id, tbsb.it6_4, parse_mode='HTML')
             elif call.data == '3-1':
                 markup = types.InlineKeyboardMarkup(row_width=1)
                 item3_11 = types.InlineKeyboardButton("Создание БД скважин", callback_data='3-11')
