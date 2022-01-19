@@ -24,14 +24,15 @@ def welcome(message):
     item2 = types.KeyboardButton("Работа с MineVision")
     item3 = types.KeyboardButton("Работа с ПО Micromine")
     item4 = types.KeyboardButton("Работа с Wenco")
-    item5 = types.KeyboardButton("Составление сводок и расчетов")
+    item5 = types.KeyboardButton("Методики работ")
     item6 = types.KeyboardButton("Необходимые знания о ТБ и СБ")
     # Добавление кнопок
     markup.add(item1, item2, item3, item4, item5, item6)
     # Приветствие
     bot.send_message(message.chat.id,
-                     "Добро пожаловать, {0.first_name}!\nЯ - <b>{1.first_name}</b>, бот созданный в помощь геологам. "
-                     "Тут ты найдешь короткую информацию по месторождению Наталкинское. "
+                     "Добро пожаловать, {0.first_name}!\nЯ - <b>{1.first_name}</b>, бот созданный в помощь сотрудникам"
+                     "ДМР Полюс Магадан. "
+                     "Тут ты найдешь короткую информацию по интерисующим вопросам. "
                      "В данный момент я нахожусь в процессе разработки, "
                      "надеюсь что в скором будующем я буду умнее".format(message.from_user, bot.get_me()),
                      parse_mode='html', reply_markup=markup)
@@ -103,7 +104,8 @@ def bot_body(message):
             item5_4 = types.InlineKeyboardButton("Расчет ежемесячного соспоставления", callback_data='5-4')
             item5_5 = types.InlineKeyboardButton("Выгрузки из ИТС", callback_data='5-5')
             item5_6 = types.InlineKeyboardButton("Подготовка блоков к работе", callback_data='5-6')
-            markup.add(item5_1, item5_2, item5_3, item5_4, item5_5, item5_6)
+            itme5_7 = types.InlineKeyboardButton('Работа с оптимизатором ВЕ', callback_data='5-7')
+            markup.add(item5_1, item5_2, item5_3, item5_4, item5_5, item5_6, itme5_7)
 
             bot.send_message(message.chat.id, 'В этом разделе находятся подсказки для выполнения следующих '
                                               'работ', reply_markup=markup)
@@ -117,6 +119,8 @@ def bot_body(message):
             markup.add(item6_1, item6_2, item6_3, item6_4)
             bot.send_message(message.chat.id, 'Тут находятся самые необходимые сведения о правилах '
                                               'ТБ и СБ', reply_markup=markup)
+        elif message.text == 'Пидр' or 'Лох' or 'Чмо' or 'Говно' or 'Хуй' or 'Хуйло' or 'Пидарас':
+            bot.send_message(message.chat.id, 'На Омчаке таких слов не прощают')
 
         else:
             bot.send_message(message.chat.id, 'Я не знаю что ответить 😢')
@@ -452,6 +456,8 @@ def callback_inline(call):
                 bot.send_message(call.message.chat.id, report.it5_6)
                 bot.send_video(call.message.chat.id, report.vd5_6)
                 report.vd5_6.seek(0)
+            elif call.data == '5-7':
+                bot.send_message(call.message.chat.id, report.it5_7)
             elif call.data == '6-1':
                 bot.send_message(call.message.chat.id, tbsb.it6_1, parse_mode='HTML')
             elif call.data == '6-2':
