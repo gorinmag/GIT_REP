@@ -119,7 +119,7 @@ def bot_body(message):
             markup.add(item6_1, item6_2, item6_3, item6_4)
             bot.send_message(message.chat.id, 'Тут находятся самые необходимые сведения о правилах '
                                               'ТБ и СБ', reply_markup=markup)
-        elif message.text == 'Пидр' or 'Лох' or 'Чмо' or 'Говно' or 'Хуй' or 'Хуйло' or 'Пидарас':
+        elif message.text == 'Пидр':
             bot.send_message(message.chat.id, 'На Омчаке таких слов не прощают')
 
         else:
