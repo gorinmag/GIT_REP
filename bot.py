@@ -100,12 +100,13 @@ def bot_body(message):
             markup = types.InlineKeyboardMarkup(row_width=1)
             item5_1 = types.InlineKeyboardButton("Создание суточной совдки рудного контроля", callback_data='5-1')
             item5_2 = types.InlineKeyboardButton("Определение содержания в подаче на ЗИФ", callback_data='5-2')
-            item5_3 = types.InlineKeyboardButton("Создание блочной модели по скважинам СЭР", callback_data='5-3')
+            item5_3 = types.InlineKeyboardButton("Перевод ресурсов в запасы", callback_data='5-3')
             item5_4 = types.InlineKeyboardButton("Расчет ежемесячного соспоставления", callback_data='5-4')
-            item5_5 = types.InlineKeyboardButton("Выгрузки из ИТС", callback_data='5-5')
+            item5_5 = types.InlineKeyboardButton("Создание БМ усреднительного склада", callback_data='5-5')
             item5_6 = types.InlineKeyboardButton("Подготовка блоков к работе", callback_data='5-6')
             itme5_7 = types.InlineKeyboardButton('Работа с оптимизатором ВЕ', callback_data='5-7')
-            markup.add(item5_1, item5_2, item5_3, item5_4, item5_5, item5_6, itme5_7)
+            item5_8 = types.InlineKeyboardButton('Моделирование взрыва в ПО Геомикс', callback_data='5-8')
+            markup.add(item5_1, item5_2, item5_3, item5_4, item5_5, item5_6, itme5_7, item5_8)
 
             bot.send_message(message.chat.id, 'В этом разделе находятся подсказки для выполнения следующих '
                                               'работ', reply_markup=markup)
@@ -443,21 +444,33 @@ def callback_inline(call):
                 bot.send_video(call.message.chat.id, wenco.vd4_5)
                 wenco.vd4_5.seek(0)
             elif call.data == '5-1':
-                bot.send_message(call.message.chat.id, report.it5_1)
+                bot.send_message(call.message.chat.id, report.it5_1, parse_mode='HTML')
             elif call.data == '5-2':
                 bot.send_message(call.message.chat.id, report.it5_2)
+                bot.send_document(call.message.chat.id, report.pdf5_21)
+                report.pdf5_21.seek(0)
+                bot.send_message(call.message.chat.id, report.it5_21, parse_mode='HTML')
             elif call.data == '5-3':
                 bot.send_message(call.message.chat.id, report.it5_3)
+                bot.send_document(call.message.chat.id, report.pdf5_3)
+                report.pdf5_3.seek(0)
             elif call.data == '5-4':
                 bot.send_message(call.message.chat.id, report.it5_4)
+                bot.send_message(call.message.chat.id, report.it5_41, parse_mode='HTML')
             elif call.data == '5-5':
-                bot.send_message(call.message.chat.id, report.it5_5)
+                bot.send_message(call.message.chat.id, report.it5_5, parse_mode='HTML')
             elif call.data == '5-6':
                 bot.send_message(call.message.chat.id, report.it5_6)
                 bot.send_video(call.message.chat.id, report.vd5_6)
                 report.vd5_6.seek(0)
             elif call.data == '5-7':
                 bot.send_message(call.message.chat.id, report.it5_7)
+                bot.send_document(call.message.chat.id, report.pdf5_7)
+                report.pdf5_7.seek(0)
+            elif call.data == '5-7':
+                bot.send_message(call.message.chat.id, report.it5_8)
+                bot.send_document(call.message.chat.id, report.pdf5_8)
+                report.pdf5_8.seek(0)
             elif call.data == '6-1':
                 bot.send_message(call.message.chat.id, tbsb.it6_1, parse_mode='HTML')
             elif call.data == '6-2':
