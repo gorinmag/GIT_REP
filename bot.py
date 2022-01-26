@@ -30,14 +30,14 @@ def welcome(message):
     markup.add(item1, item2, item3, item4, item5, item6)
     # Приветствие
     bot.send_message(message.chat.id,
-                     "Добро пожаловать, {0.first_name}!\nЯ - <b>{1.first_name}</b>, бот созданный в помощь сотрудникам"
+                     "Добро пожаловать, {0.first_name}!\nЯ - <b>{1.first_name}</b>, бот созданный в помощь сотрудникам "
                      "ДМР Полюс Магадан. "
-                     "Тут ты найдешь короткую информацию по интерисующим вопросам. "
-                     "В данный момент я нахожусь в процессе разработки, "
-                     "надеюсь что в скором будующем я буду умнее".format(message.from_user, bot.get_me()),
+                     "\n\nТут ты найдешь короткую информацию по интерисующим вопросам. "
+                     "\n\nЕсли у вас есть идеи как улучшить меня прошу обращатся к моим создателям - геологам ресурсной"
+                     " группы и управления рудного контроля Полюс Магадан.".format(message.from_user, bot.get_me()),
                      parse_mode='html', reply_markup=markup)
     bot.send_message(message.chat.id,
-                     "Выбери необходимый раздел в контекстном меню".format(
+                     "Выбери необходимый раздел в меню".format(
                          message.from_user, bot.get_me()),
                      parse_mode='html', reply_markup=markup)
 
@@ -467,7 +467,7 @@ def callback_inline(call):
                 bot.send_message(call.message.chat.id, report.it5_7)
                 bot.send_document(call.message.chat.id, report.pdf5_7)
                 report.pdf5_7.seek(0)
-            elif call.data == '5-7':
+            elif call.data == '5-8':
                 bot.send_message(call.message.chat.id, report.it5_8)
                 bot.send_document(call.message.chat.id, report.pdf5_8)
                 report.pdf5_8.seek(0)
@@ -531,8 +531,7 @@ def callback_inline(call):
             # text="Подумаю",reply_markup=None)
 
             # show alert
-            bot.answer_callback_query(callback_query_id=call.id, show_alert=False,
-                                      text="Бот находится в тестовом режиме")
+
 
     except Exception as e:
         print(repr(e))
